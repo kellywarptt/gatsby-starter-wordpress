@@ -1,24 +1,24 @@
 // Base.
 	@import 'animate.scss';
-	@import 'base/colors';
-	@import 'base/page';
-	@import 'base/typography';
+	@import 'base/_colors';
+	@import 'base/_page';
+	@import 'base/_typography';
 
 // Component.
 
-	@import 'components/form';
-	@import 'components/images';
-	@import 'components/button';
-	@import 'components/animations';
-	@import 'components/clouds';
-	@import 'components/modal';
+	@import 'components/_form';
+	@import 'components/_images';
+	@import 'components/_button';
+	@import 'components/_animations';
+	@import 'components/_clouds';
+	@import 'components/_modal';
 
 // Layout.
 
-	@import 'layout/header';
-	@import 'layout/home';
-	@import 'layout/about';
-	@import 'layout/careers';
-	@import 'layout/requestinvite';
-	@import 'layout/generic';
-	@import 'layout/footer';
+	@import 'layout/_header';
+	@import 'layout/_home';
+	@import 'layout/_about';
+	@import 'layout/_careers';
+	@import 'layout/_requestinvite';
+	@import 'layout/_generic';
+	@import 'layout/_footer';
