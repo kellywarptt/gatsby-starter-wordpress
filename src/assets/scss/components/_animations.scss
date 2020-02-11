@@ -1,0 +1,32 @@
+/* Animations */
+
+.transition-wrapper {
+  position: relative;
+  z-index: 1;
+
+  .transition-item {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+}
+@keyframes sway {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}

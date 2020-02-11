@@ -1,15 +1,31 @@
-import React from 'react'
-import Helmet from 'react-helmet'
+import React from "react"
+import PropTypes from "prop-types"
 
-import Navbar from './Navbar'
-import './all.sass'
+import Header from "./header"
+import Footer from "./footer"
+import '../assets/scss/main.scss'
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet title="Home | Gatsby + WordPress" />
-    <Navbar />
-    <div>{children}</div>
-  </div>
-)
+const Layout = ({ children, pageId }) => {
 
-export default TemplateWrapper
+  return ( 
+    <div id="page" className={`site page-id-${pageId}`}>
+        <Header />
+        <div id="content" className="site-content">
+          <section id="primary" className="content-area">
+            <main id="main" className="site-main">
+              {children}
+            </main>
+            {/* #main */}
+          </section>
+          {/* #primary */}
+        </div>
+        <Footer />
+      </div>
+  )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node,
+}
+
+export default Layout

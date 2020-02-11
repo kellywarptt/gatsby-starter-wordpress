@@ -1,222 +1,164 @@
 const _ = require('lodash')
 const path = require('path')
-const { createFilePath } = require('gatsby-source-filesystem')
-const { paginate } = require('gatsby-awesome-pagination')
+const slash = require(`slash`)
 
-const getOnlyPublished = edges =>
-  _.filter(edges, ({ node }) => node.status === 'publish')
+const queryWordPressGatsbyConfig = `
+  {
+    wordpressGatsbyConfig {
+      per_page
+      front_page
+      posts_page
+    }
+  }
+`
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
-
-  return graphql(`
-    {
-      allWordpressPage {
-        edges {
-          node {
-            id
-            slug
-            status
-          }
+const queryWordPressPages = `
+  {
+    allWordpressPage (filter: { status: { eq : "publish" } }) {
+      edges {
+        node {
+          id
+          wordpress_id
+          slug
+          template
         }
       }
     }
-  `)
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
-      }
-
-      const pageTemplate = path.resolve(`./src/templates/page.js`)
-
-      // Only publish pages with a `status === 'publish'` in production. This
-      // excludes drafts, future posts, etc. They will appear in development,
-      // but not in a production build.
-
-      const allPages = result.data.allWordpressPage.edges
-      const pages =
-        process.env.NODE_ENV === 'production'
-          ? getOnlyPublished(allPages)
-          : allPages
-
-      // Call `createPage()` once per WordPress page
-      _.each(pages, ({ node: page }) => {
-        createPage({
-          path: `/${page.slug}/`,
-          component: pageTemplate,
-          context: {
-            id: page.id,
-          },
-        })
-      })
-    })
-    .then(() => {
-      return graphql(`
-        {
-          allWordpressPost {
-            edges {
-              node {
-                id
-                slug
-                status
-              }
-            }
-          }
-        }
-      `)
-    })
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
-      }
-
-      const postTemplate = path.resolve(`./src/templates/post.js`)
-      const blogTemplate = path.resolve(`./src/templates/blog.js`)
-
-      // In production builds, filter for only published posts.
-      const allPosts = result.data.allWordpressPost.edges
-      const posts =
-        process.env.NODE_ENV === 'production'
-          ? getOnlyPublished(allPosts)
-          : allPosts
-
-      // Iterate over the array of posts
-      _.each(posts, ({ node: post }) => {
-        // Create the Gatsby page for this WordPress post
-        createPage({
-          path: `/${post.slug}/`,
-          component: postTemplate,
-          context: {
-            id: post.id,
-          },
-        })
-      })
-
-      // Create a paginated blog, e.g., /, /page/2, /page/3
-      paginate({
-        createPage,
-        items: posts,
-        itemsPerPage: 10,
-        pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `/` : `/page`),
-        component: blogTemplate,
-      })
-    })
-    .then(() => {
-      return graphql(`
-        {
-          allWordpressCategory(filter: { count: { gt: 0 } }) {
-            edges {
-              node {
-                id
-                name
-                slug
-              }
-            }
-          }
-        }
-      `)
-    })
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
-      }
-
-      const categoriesTemplate = path.resolve(`./src/templates/category.js`)
-
-      // Create a Gatsby page for each WordPress Category
-      _.each(result.data.allWordpressCategory.edges, ({ node: cat }) => {
-        createPage({
-          path: `/categories/${cat.slug}/`,
-          component: categoriesTemplate,
-          context: {
-            name: cat.name,
-            slug: cat.slug,
-          },
-        })
-      })
-    })
-    .then(() => {
-      return graphql(`
-        {
-          allWordpressTag(filter: { count: { gt: 0 } }) {
-            edges {
-              node {
-                id
-                name
-                slug
-              }
-            }
-          }
-        }
-      `)
-    })
-
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
-      }
-
-      const tagsTemplate = path.resolve(`./src/templates/tag.js`)
-
-      // Create a Gatsby page for each WordPress tag
-      _.each(result.data.allWordpressTag.edges, ({ node: tag }) => {
-        createPage({
-          path: `/tags/${tag.slug}/`,
-          component: tagsTemplate,
-          context: {
-            name: tag.name,
-            slug: tag.slug,
-          },
-        })
-      })
-    })
-    .then(() => {
-      return graphql(`
-        {
-          allWordpressWpUsers {
-            edges {
-              node {
-                id
-                slug
-              }
-            }
-          }
-        }
-      `)
-    })
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
-      }
-
-      const authorTemplate = path.resolve(`./src/templates/author.js`)
-
-      _.each(result.data.allWordpressWpUsers.edges, ({ node: author }) => {
-        createPage({
-          path: `/author/${author.slug}`,
-          component: authorTemplate,
-          context: {
-            id: author.id,
-          },
-        })
-      })
-    })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
   }
-}
+`
+
+const queryWordPressPosts = `
+  {
+    allWordpressPost (filter: { status: { eq : "publish" } }) {
+      edges {
+        node {
+          id
+          wordpress_id
+          slug
+          template
+        }
+      }
+    }
+  }
+`
+
+const queryWordPressCategories = `
+  {
+    allWordpressCategory {
+      edges {
+        node {
+          id
+          slug
+        }
+      }
+    }
+  }
+`;
+
+
+const pageTemplate = path.resolve(`./src/templates/page.js`)
+const homeTemplate = path.resolve(`./src/templates/home.js`)
+const postTemplate = path.resolve(`./src/templates/post.js`)
+const blogTemplate = path.resolve(`./src/templates/blog.js`)
+const aboutTemplate = path.resolve(`./src/templates/about.js`)
+const careersTemplate = path.resolve(`./src/templates/careers.js`)
+const inviteTemplate = path.resolve(`./src/templates/request_invite.js`)
+const categoryTemplate = path.resolve(`./src/templates/category.js`)
+
+exports.createPages = ({ graphql, boundActionCreators }) => {
+
+    let config;
+    const { createPage } = boundActionCreators;
+
+    return new Promise((resolve, reject) => {
+
+        graphql(queryWordPressGatsbyConfig)
+
+            .then(r => {
+                if (r.errors) {
+                    console.log(r.errors);
+                    reject(r.errors);
+                }
+                return r.data.wordpressGatsbyConfig;
+            })
+
+            .then(config => {
+
+                return graphql(queryWordPressPages).then(r => {
+                    if (r.errors) {
+                        console.log(r.errors);
+                        reject(r.errors);
+                    }
+                    _.each(r.data.allWordpressPage.edges, edge => {
+                        createPage({
+                            path: edge.node.wordpress_id === config.front_page ? '/' : edge.node.slug,
+                            component: (
+                              () => {
+                                  if (edge.node.wordpress_id === config.posts_page) {
+                                      return slash(blogTemplate);
+                                  } else if (edge.node.wordpress_id === config.front_page) {
+                                      return slash(homeTemplate);
+                                  } else if (edge.node.wordpress_id === 13) {
+                                      return slash(aboutTemplate);
+                                  } else if (edge.node.wordpress_id === 15) {
+                                    return slash(careersTemplate);
+                                  } else if (edge.node.wordpress_id === 14) {
+                                    return slash(inviteTemplate);
+                                }
+                                  return slash(pageTemplate);
+                              }
+                            )(),
+                            context: {
+                                id: edge.node.id,
+                                wordpress_id: edge.node.wordpress_id
+                            }
+                        });
+                    });
+                })
+                .then(r => {
+                    return graphql(queryWordPressPosts).then(r => {
+                        if (r.errors) {
+                            console.log(r.errors);
+                            reject(r.errors);
+                        }
+                        _.each(r.data.allWordpressPost.edges, edge => {
+                            createPage({
+                                path: edge.node.slug,
+                                component: slash(postTemplate),
+                                context: {
+                                    id: edge.node.id,
+                                    wordpress_id: edge.node.wordpress_id
+                                }
+                            });
+                        });
+                    });
+                })
+                .then(r => {
+                    return graphql(queryWordPressCategories).then(r => {
+                        if (r.errors) {
+                            console.log(r.errors);
+                            reject(r.errors);
+                        }
+                        _.each(r.data.allWordpressCategory.edges, edge => {
+                            createPage({
+                                path: `category/${edge.node.slug}`,
+                                component: slash(categoryTemplate),
+                                context: {
+                                    id: edge.node.id,
+                                    wordpress_posts_page_id: config.posts_page
+                                }
+                            })
+                        });
+
+                    });
+
+                })
+                .then(r => {
+                    resolve();
+                })
+
+            });
+
+    });
+
+};

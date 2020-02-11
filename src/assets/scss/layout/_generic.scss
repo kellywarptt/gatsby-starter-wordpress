@@ -1,0 +1,133 @@
+/* Generic Pages */
+.general{
+  .container{
+    flex-direction: column;
+
+    h1{
+      margin-top:12rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    h2{
+      margin:2rem 0 .5rem 0;
+      letter-spacing: 0;
+    }
+    p{
+      margin-bottom: 1rem;
+
+      &.small{
+        font-size: 14px;
+      }
+
+      a{
+        color:$purple;
+        font-weight: 700;
+        transition: all .2s;
+
+        &:hover{
+          color:$dk-purple;
+        }
+      }
+    }
+    ul{
+      margin-left:1rem;
+      margin-bottom: 1rem;
+    }
+    li{
+      font-size: 18px;
+      margin-bottom: .5rem;
+      color:$grey;
+
+      ul{
+        margin-top: 1rem;
+      }
+    }
+  }
+  footer{
+    margin-top:4rem;
+    .white{
+      display: none;
+    }
+  }
+  header{
+    .container{
+      flex-direction: inherit;
+      .logo{
+        .logo-white{
+          display: none;
+        }
+        .logo-dark{
+          display: block;
+        }
+      }
+      ul{
+        li{
+          a{
+            color:$dark;
+            &.btn{
+              color:$white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 900px) {
+  .general{
+    p{
+      font-size: 16px;
+    }
+    .container{
+      h1{
+        margin-top:4rem;
+        text-align: center;
+      }
+      .small{
+        text-align: center;
+      }
+      ul{
+        li{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  header{
+    .burger-container{
+      #burger{
+        .bar{
+          background:$dark;
+        }
+      }
+    }
+    &.menu-opened{
+      background:$dark;
+      .container{
+        .logo{
+          .logo-white{
+            display: block;
+          }
+          .logo-dark{
+            display: none;
+          }
+        }
+        ul{
+          li{
+            a{
+              color:$white;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+      .burger-container{
+        #burger{
+          .bar{
+            background:$white;
+          }
+        }
+      }
+    }
+  }
+}

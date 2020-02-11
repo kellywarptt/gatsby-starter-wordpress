@@ -1,0 +1,80 @@
+/* Modal */
+
+.ReactModal__Overlay{
+  background:rgba(3,29,82, .9) !important;
+  transition: all .2s ease-in-out;
+  z-index: 10;
+}
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+.ReactModal__Content{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  img{
+    border-radius: 200px;
+  }
+  .details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+
+    a {
+      img{
+        max-width: 100%;
+        margin:0 0 0 .5rem;
+        border-radius: 0;
+      }
+    }
+
+    img{
+      max-width: 150px;
+      margin-bottom: 1rem;
+    }
+
+    .name{
+      width:100%;
+      text-align: center;
+    }
+    h2{
+      margin-bottom:0;
+    }
+  }
+  button{
+    position: absolute;
+    right:2rem;
+    top:2rem;
+    width: 20px;
+    height: 20px;
+    border:0;
+    cursor: pointer;
+    &:focus{
+      outline: 0 !important;
+    }
+    img{
+      transition: all .2s;
+      &:hover{
+        transform:rotate(180deg);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .ReactModal__Content{
+    width: 100% !important;
+    height: 100vh !important;
+    overflow-y: scroll !important;
+  }
+}

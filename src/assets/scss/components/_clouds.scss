@@ -1,0 +1,40 @@
+/* Clouds */
+
+.clouds{
+  position: relative;
+  width: 100%;
+  margin-top:-16rem;
+  z-index: 1;
+  height: 330px;
+  overflow: hidden;
+
+  .clouds-dark{
+    position: absolute;
+    right: 4rem;
+    bottom: 1.5rem;
+    animation: sway 10s infinite;
+    z-index: 1;
+  }
+  .clouds-blue{
+    position: absolute;
+    width: 154%;
+    left: -4rem;
+    bottom: -12rem;
+    animation: sway 10s infinite;
+    animation-delay: 2s;
+    z-index: 2;
+    max-width: 200%;
+  }
+  .clouds-white{
+    margin-top: 2rem;
+    width: 113%;
+    position: absolute;
+    display: block;
+    animation: sway 10s infinite;
+    animation-delay: 5s;
+    z-index: 3;
+    bottom: -9rem;
+    left: -7rem;
+    max-width: 200%;
+  }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="1001px" viewBox="0 0 1440 1001" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <pattern id="pattern-1" width="6" height="6" x="-6" y="2092" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-2"></use>
+        </pattern>
+        <image id="image-2" width="6" height="6" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAABGdBTUEAALGN5fIAKQAAAExJREFUCB1jYAACZmZmXxYWls1AvAnEBomBBYGc/2jYF8hn7gXKq4FVQQlGRkZeJmQBJPZ/pv///89CEgAzgWKzwQygcTDLN4PYIEEA4isSIW0RAw0AAAAASUVORK5CYII="></image>
+    </defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.05">
+        <g transform="translate(0.000000, -2098.000000)" fill="url(#pattern-1)" id="Rectangle">
+            <polygon points="0 2098 1440 2098 1440 3099 0 3099"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,157 @@
+/* Request Invite */
+.page-id-14{
+  .container{
+    flex-wrap: wrap;
+  }
+  header{
+    .container{
+      .logo{
+        .logo-white{
+          display: none;
+        }
+        .logo-dark{
+          display: block;
+        }
+      }
+      ul{
+        li{
+          a{
+            color:$dark;
+            &.btn{
+              color:$white;
+            }
+          }
+        }
+      }
+    }
+  }
+  footer{
+    .white{
+      display: none;
+    }
+  }
+}
+
+.invite{
+  overflow: auto;
+  box-sizing: border-box;
+  transition: transform 0.5s, opacity 0.5s;
+
+  h1{
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  .form{
+    padding:10rem 0 7rem 0;
+
+    form{
+      label{
+        width: 100%;
+      }
+      .half{
+        width: 48%;
+      }
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+  }
+  .copy{
+
+    p{
+      margin-bottom: 4rem;
+    }
+  }
+  footer{
+    .white{
+      display: none;
+    }
+  }
+  &.transition-appear {
+    opacity: 0;
+
+    &.transition-appear-active {
+      opacity: 1;
+    }
+  }
+  &.transition-leave {
+    opacity: 1;
+
+    &.transition-leave-active {
+      opacity: 0;
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  .invite{
+    header{
+      .burger-container{
+        #burger{
+          .bar{
+            background:$dark;
+          }
+        }
+      }
+      &.menu-opened{
+        background:$dark;
+        .container{
+          .logo{
+            .logo-white{
+              display: block;
+            }
+            .logo-dark{
+              display: none;
+            }
+          }
+          ul{
+            li{
+              a{
+                color:$white;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+        .burger-container{
+          #burger{
+            .bar{
+              background:$white;
+            }
+          }
+        }
+      }
+    }
+    h1{
+      text-align: center;
+    }
+    .grid-6{
+      display: flex;
+      flex-wrap: wrap-reverse;
+
+      img{
+        margin-bottom: 2rem;
+      }
+      p{
+        border-bottom: 1px solid $lt-grey;
+        padding-bottom: 3rem;
+      }
+    }
+    .form{
+      padding:8rem 0 4rem 0;
+    }
+    form{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      label{
+        width: 100%;
+
+      }
+    }
+  }
+}

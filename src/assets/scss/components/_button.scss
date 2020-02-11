@@ -1,0 +1,32 @@
+/* Button */
+
+.btn{
+  font: 16px/1.5 'PT Sans';
+  color:$white;
+  padding:12px 24px;
+  text-align: center;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  border:0;
+  font-size: 1rem;
+  min-width: 145px;
+  transition: all .2s;
+
+  &:hover{
+    cursor: pointer;
+  }
+
+  &.orange{
+    background:$orange;
+
+    &:hover{
+      background:#EE8D54
+    }
+
+    &[disabled]{
+      opacity: .4;
+    }
+  }
+}

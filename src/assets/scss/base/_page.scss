@@ -1,0 +1,79 @@
+///
+/// Dimension by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Basic */
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus{
+    outline: none !important;
+  }
+}
+
+body, body * {
+  scroll-behavior: smooth; // not compatible with Safari
+
+}
+.container{
+  max-width: 1400px;
+  width:100%;
+  margin:0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+#skrollr-body{
+  overflow: hidden;
+}
+
+/* Divisions */
+.grid-1{
+  width: 8.3333333%
+}
+.grid-2{
+  width: 16.666667%;
+}
+.grid-3{
+  width: 25%;
+}
+.grid-4{
+  width:33.333333%
+}
+.grid-5{
+  width:41.666667%
+}
+.grid-6{
+  width: 50%;
+}
+.grid-7{
+  width: 58.333333%;
+}
+.grid-8{
+  width: 66.666667%;
+}
+.grid-9{
+  width: 75%;
+}
+.grid-10{
+  width: 83.333333%;
+}
+.grid-11{
+  width: 91.666667%;
+}
+.grid-12{
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .container{
+    flex-wrap: wrap;
+  }
+	.grid-4, .grid-5, .grid-6{
+    width:100%;
+  }
+}

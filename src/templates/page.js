@@ -1,56 +1,41 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
+import SEO from "../components/seo"
 
-export const PageTemplate = ({ title, content }) => {
-  return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <div
-                className="content"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
-            </div>
-          </div>
+class Page extends React.Component {
+  render() {
+    const pageData = this.props.data.wordpressPage
+
+    return (
+      <Layout pageId={pageData.wordpress_id}>
+        <SEO title={pageData.title} description={pageData.excerpt} />
+        <div className="container">
+          <h1 className="entry-title">{pageData.title}</h1>
+          <div
+            className="entry-content"
+            dangerouslySetInnerHTML={{ __html: pageData.content }}
+          />
         </div>
-      </div>
-    </section>
-  )
-}
-
-PageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-}
-
-const Page = ({ data }) => {
-  const { wordpressPage: page } = data
-
-  return (
-    <Layout>
-      <PageTemplate title={page.title} content={page.content} />
-    </Layout>
-  )
-}
-
-Page.propTypes = {
-  data: PropTypes.object.isRequired,
+      </Layout>
+    )
+  }
 }
 
 export default Page
 
 export const pageQuery = graphql`
-  query PageById($id: String!) {
-    wordpressPage(id: { eq: $id }) {
-      title
-      content
+    query currentPageQuery($id: String!) {
+        wordpressPage(id: { eq: $id }) {
+            title
+            content
+            excerpt
+            wordpress_id
+            yoast_wpseo {
+              title
+              metadesc
+              metakeywords
+            }
+        }
     }
-  }
 `

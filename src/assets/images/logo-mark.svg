@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="47px" viewBox="0 0 50 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Group 14</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="99.10015%" y1="100.135486%" x2="39.8036034%" y2="42.8486396%" id="linearGradient-1">
+            <stop stop-color="#01D5FE" offset="0%"></stop>
+            <stop stop-color="#01C7F9" offset="12%"></stop>
+            <stop stop-color="#01A0EC" offset="34%"></stop>
+            <stop stop-color="#0064D6" offset="63%"></stop>
+            <stop stop-color="#0054D1" offset="71%"></stop>
+            <stop stop-color="#005FD5" offset="75%"></stop>
+            <stop stop-color="#007DE0" offset="83%"></stop>
+            <stop stop-color="#008CE5" offset="86%"></stop>
+            <stop stop-color="#01D3FD" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="55.6488186%" y1="53.5049905%" x2="-0.942671178%" y2="-0.157547954%" id="linearGradient-2">
+            <stop stop-color="#9B83E5" offset="4%"></stop>
+            <stop stop-color="#8D7AE4" offset="6%"></stop>
+            <stop stop-color="#6B64E0" offset="14%"></stop>
+            <stop stop-color="#5153DE" offset="21%"></stop>
+            <stop stop-color="#4249DD" offset="28%"></stop>
+            <stop stop-color="#3D46DC" offset="33%"></stop>
+            <stop stop-color="#4149DC" offset="50%"></stop>
+            <stop stop-color="#4E51DE" offset="67%"></stop>
+            <stop stop-color="#625EE0" offset="85%"></stop>
+            <stop stop-color="#7A6EE2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-691.000000, -3191.000000)" fill-rule="nonzero" id="Group-14">
+            <g transform="translate(691.000000, 3191.000000)">
+                <path d="M49.2170022,47 L38.4752728,28.1083615 C37.1721791,25.7040728 37.240706,22.7754318 38.6547842,20.4365704 C38.6547842,20.4365704 43.5594984,13.1231096 44.3701949,9.78065242 C44.7218127,8.68020484 44.3912787,7.4731085 43.5305449,6.71428571 L8.94854586,43.7221597 C8.94854586,43.7221597 11.4501238,46.3479565 15.3183046,43.0466192 C15.3183046,43.0466192 25.1045702,35.1222347 29.7487034,37.3485814 L49.2170022,47 Z" id="Path" fill="url(#linearGradient-1)"></path>
+                <path d="M3.28626015e-14,-6.39488462e-14 L10.5200104,19.1394842 C11.8344004,21.5167846 11.7721949,24.4123155 10.3569095,26.7314796 C10.3569095,26.7314796 5.42893119,33.9464851 4.62507657,37.2465962 C4.28328692,38.3391206 4.61871171,39.529614 5.48135649,40.2857143 L40.2684564,3.74669903 C40.2684564,3.74669903 37.7345668,1.14836905 33.8143193,4.39628152 C33.8143193,4.39628152 23.9583627,12.2202707 19.2517356,9.99893053 L3.28626015e-14,-6.39488462e-14 Z" id="Path" fill="url(#linearGradient-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
