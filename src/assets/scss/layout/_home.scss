@@ -105,7 +105,7 @@
   }
 
   .copy{
-    margin-top:4rem;
+    margin-top:5rem;
   }
 
   h2{
@@ -118,14 +118,17 @@
     li{
       margin-bottom: 1rem;
       color:$grey;
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
-  .grid-6{
-    position: relative;
-    z-index: 2;
-    margin-top: -8rem;
+  .grid-5{
+     &:first-of-type{
+      position: relative;
+      z-index: 2;
+      margin-top: -8rem;
+      margin-left:5%;
+     }
 
     .panel{
       background:$white;

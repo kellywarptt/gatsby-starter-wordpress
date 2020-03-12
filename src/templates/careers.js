@@ -3,7 +3,6 @@ import Layout from '../components/Layout'
 import SEO from "../components/seo"
 import { graphql } from "gatsby";
 
-import ScrollAnimation from "react-animate-on-scroll"
 import Clouds from "../components/clouds"
 
 import cloudLeft from "../assets/images/cloud-single.svg"
@@ -43,15 +42,15 @@ class Careers extends Component {
           <div id="why">
             <div className="container">
               <h2>
-                <ScrollAnimation
+                <div
                   animateIn="zoomIn"
                   className="grid-5"
                   animateOnce={true}
                 >
                   {pageData.acf.careers.why.headline}
-                </ScrollAnimation>
+                </div>
               </h2>
-              <ScrollAnimation
+              <div
                 animateIn="zoomIn"
                 className="grid-10 col-2"
                 delay={300}
@@ -60,12 +59,12 @@ class Careers extends Component {
                 <p>
                   {pageData.acf.careers.why.copy}
                 </p>
-              </ScrollAnimation>
+              </div>
             </div>
           </div>
           <div className="quote">
             <div className="container">
-              <ScrollAnimation
+              <div
                 animateIn="zoomIn"
                 className="grid-5 panel"
                 delay={300}
@@ -74,14 +73,14 @@ class Careers extends Component {
                 <p className="italic">
                   {pageData.acf.careers.why.box_copy}
                 </p>
-              </ScrollAnimation>
-              <ScrollAnimation
+              </div>
+              <div
                 animateIn="fadeInRight"
                 className="grid-8"
                 animateOnce={true}
               >
                 <img src={pageData.acf.careers.why.image.source_url} alt={pageData.acf.careers.why.image.alt_text} />
-              </ScrollAnimation>
+              </div>
             </div>
           </div>
           <div className="wave"></div>
@@ -89,7 +88,7 @@ class Careers extends Component {
             <div className="container">
               <h2>{pageData.acf.careers.perks.headline}</h2>
               {pageData.acf.careers.perks.single_perk.map((perk, idx) => (
-                <ScrollAnimation
+                <div
                   animateIn="zoomIn"
                   className="grid-6"
                   animateOnce={true}
@@ -97,8 +96,8 @@ class Careers extends Component {
                 >
                   <img src={perk.icon.source_url} alt={perk.icon.alt_text} />
                   <h3>{perk.headline}</h3>
-                  <p>{perk.copy}</p>
-                </ScrollAnimation>
+                  <p className="grid-8">{perk.copy}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -111,7 +110,7 @@ class Careers extends Component {
               <h2 className="white">{pageData.acf.careers.openings.headline}</h2>
               <div className="job-contain grid-8">
               {pageData.acf.careers.openings.job.map((job, idx) => (
-                <ScrollAnimation
+                <div
                   animateIn="zoomIn"
                   animateOnce={true}
                   delay={idx * 100}
@@ -122,7 +121,7 @@ class Careers extends Component {
                     <span class="location">{job.location}</span>
                     <span class="apply">Apply</span>
                   </a>
-                </ScrollAnimation>
+                </div>
               ))}
               </div>
             </div>

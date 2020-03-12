@@ -14,7 +14,3 @@ export default class IndexPage extends React.Component {
   }
 }
 
-IndexPage.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string,
-}

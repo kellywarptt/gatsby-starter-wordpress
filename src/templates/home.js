@@ -90,24 +90,24 @@ const IndexPage = (props) => {
         </div>
         <div className="gdpr">
           <div className="container">
-            <div className="grid-6">
-              <ScrollAnimation className="panel" animateIn="zoomIn" animateOnce={true}>
+            <div className="grid-5">
+              <ScrollAnimation className="panel" animateIn="fadeInUp" animateOnce={true}>
               <img src={pageData.acf.privacy.images[0].image.source_url} alt={pageData.acf.privacy.images[0].image.source_url} />
               </ScrollAnimation>
-              <ScrollAnimation className="panel" animateIn="zoomIn" delay={300} animateOnce={true}>
+              <ScrollAnimation className="panel" animateIn="fadeInUp" delay={200} animateOnce={true}>
               <img src={pageData.acf.privacy.images[1].image.source_url} alt={pageData.acf.privacy.images[1].image.source_url} />
               </ScrollAnimation>
-              <ScrollAnimation className="panel" animateIn="zoomIn" delay={600} animateOnce={true}>
+              <ScrollAnimation className="panel" animateIn="fadeInUp" delay={300} animateOnce={true}>
                 <img src={pageData.acf.privacy.images[2].image.source_url} alt={pageData.acf.privacy.images[2].image.source_url} />
               </ScrollAnimation>
-              <ScrollAnimation className="panel" animateIn="zoomIn" delay={900} animateOnce={true}>
+              <ScrollAnimation className="panel" animateIn="fadeInUp" delay={400} animateOnce={true}>
               <img src={pageData.acf.privacy.images[3].image.source_url} alt={pageData.acf.privacy.images[3].image.source_url} />
               </ScrollAnimation>
             </div>
             <div className="grid-5">
               <ScrollAnimation className="copy" animateIn="fadeIn" delay={600} animateOnce={true}>
               <h4>{pageData.acf.privacy.subhead}</h4>
-              <h2>{pageData.acf.privacy.heading_2}</h2>
+              <h2>{pageData.acf.privacy.headline_2}</h2>
                <p
                 dangerouslySetInnerHTML={{ __html: pageData.acf.privacy.copy }}
                />

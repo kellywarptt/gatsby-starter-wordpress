@@ -1,6 +1,6 @@
 /* Typography */
 body{
-  font:16px/1.5 'PT Sans';
+  font:16px/1.5 Futura, 'PT Sans';
   font-weight: 300;
   color:$dark;
   overflow-x:hidden;
@@ -15,16 +15,15 @@ h1{
   }
 
   span{
-    font-weight: 700;
+    font-weight: 300;
   }
   div{
-    font-weight: 700;
+    font-weight: 300;
   }
 }
 h2{
   font-size: 34px;
-  letter-spacing: 1px;
-  font-weight: 700;
+  font-weight: 300;
   margin-bottom: 1rem;
 
   &.white{
@@ -33,9 +32,8 @@ h2{
 }
 h3{
   font-size: 20px;
-  letter-spacing: .6px;
   line-height: 1.5;
-  font-weight: 700;
+  font-weight: 300;
 }
 h4{
   font-size: 14px;
@@ -46,7 +44,7 @@ h4{
   font-weight: 700;
 }
 p{
-  line-height: 1.5;
+  line-height: 2;
   color:$grey;
 
   &.white{
